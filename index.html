@@ -1,1 +1,55 @@
-something
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Quizzer</title>
+  </head>
+  <body>
+    <header class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <h1 id="title">Quizzer</h1>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <h1 class="hidden" id="score">0</h1>
+        </div>
+      </div>
+    </header>
+    <main>
+      <button id="playButton">Start Game!</button>
+      <progress class="hidden" id="progress" value="0" max="320"></progress>
+      <div class="container hidden" id="question">
+        <div class="container" id="resultContainer">
+          <h5 id="result"></h5>
+        </div>
+      </div>
+    </main>
+    <script src="app.js"></script>
+    <script src="js/questions.js"></script>
+  </body>
+</html>
+
+<!-- <h4 id="questionText"></h4>
+<div class="container" id="answers">
+  <div class="row">
+    <div class="col-6">
+      <button id="answerA" class="answer"></button>
+    </div>
+    <div class="col-6">
+      <button id="answerB" class="answer"></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button id="answerC" class="answer"></button>
+    </div>
+    <div class="col-6">
+      <button id="answerD" class="answer"></button>
+    </div>
+  </div>
+</div> -->
