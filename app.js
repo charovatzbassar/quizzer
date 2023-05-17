@@ -10,15 +10,30 @@ function shuffleOptions(arr) {
   return newArr;
 }
 
+function getQuestion() {}
+
 function getCurrentQuestion() {}
 
-function loadQuestion() {}
+function loadQuestion(quesiton) {
+
+}
 
 function assignAnswers() {}
 
-function buttonToggle() {}
+function checkAnswer(answer) {}
 
-const checkIfLastQuestion = () => "";
+function buttonsDisable(buttons) {
+  buttons.forEach((button) => {
+    button.disabled = false;
+  });
+}
+
+function buttonsEnable(buttons) {
+    buttons.forEach((button) => {
+      button.disabled = true;
+    });
+  }
+
 
 function resetGame() {
   progressBar.classList.add("hidden");

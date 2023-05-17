@@ -1,4 +1,6 @@
-const questionsEasy = [];
-const questionsMedium = [];
-const questionsHard = [];
-const questionsExtreme = [];
+const questions = {
+  easy: [],
+  medium: [],
+  hard: [],
+  extreme: [],
+};
