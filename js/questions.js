@@ -1,30 +1,23 @@
 const questionList = {
   easy: [
     {
-      questionText: "",
-      correctAnswer: "",
-      incorrectAnswers: [],
+      questionText: "When did WW2 begin?",
+      correctAnswer: "1939",
+      incorrectAnswers: ["1938", "1940", "1937"],
     },
   ],
   medium: [
     {
       questionText: "",
       correctAnswer: "",
-      incorrectAnswers: [],
+      incorrectAnswers: ["", "", ""],
     },
   ],
   hard: [
     {
       questionText: "",
       correctAnswer: "",
-      incorrectAnswers: [],
-    },
-  ],
-  extreme: [
-    {
-      questionText: "",
-      correctAnswer: "",
-      incorrectAnswers: [],
+      incorrectAnswers: ["", "", ""],
     },
   ],
 };

@@ -22,8 +22,27 @@
     </header>
     <main>
       <button id="playButton">Start Game!</button>
-      <progress class="hidden" id="progress" value="0" max="320"></progress>
       <div class="container hidden" id="question">
+        <progress id="progress" value="0" max="300"></progress>
+        <h4 id="questionText"></h4>
+        <div class="container" id="answers">
+          <div class="row">
+            <div class="col-6">
+              <button class="answer"></button>
+            </div>
+            <div class="col-6">
+              <button class="answer"></button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <button class="answer"></button>
+            </div>
+            <div class="col-6">
+              <button class="answer"></button>
+            </div>
+          </div>
+        </div>
         <div class="container" id="resultContainer">
           <h5 id="result"></h5>
         </div>
