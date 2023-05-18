@@ -10,12 +10,12 @@ function shuffleOptions(arr) {
   return newArr;
 }
 
-function getQuestion() {}
+const getQuestion = (questions) => 
+  questions[Math.floor(Math.random()*questions.length)]
 
-function getCurrentQuestion() {}
 
-function loadQuestion(quesiton) {
-
+function loadQuestion(question) {
+  
 }
 
 function assignAnswers() {}
@@ -51,6 +51,7 @@ let score = 0;
 let seconds = 0;
 let secondCounter = null;
 let secondInterval = 2000;
+let currentQuestion = null;
 
 const questionElement = document.querySelector("#question");
 const playButton = document.querySelector("#playButton");
