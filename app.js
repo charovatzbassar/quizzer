@@ -10,11 +10,29 @@ function shuffleOptions(arr) {
   return newArr;
 }
 
-const getQuestion = (questions) =>
-  questions[Math.floor(Math.random() * questions.length)];
+function checkDifficulty() {
+  if (questionNumber <= 5) {
+    currentQuestionDifficulty = questionList.easy;
+  } else if (questionNumber <= 10) {
+    currentQuestionDifficulty = questionList.medium;
+  } else if (questionNumber <= 15) {
+    currentQuestionDifficulty = questionList.hard;
+  }
+}
+
+
+function getQuestion(questions) {
+  while (true) {
+    let pickedQuestion =
+      questions[Math.floor(Math.random() * questions.length)];
+    if (!answeredQuestions.includes(pickedQuestion)) {
+      return pickedQuestion;
+    }
+  }
+}
 
 function loadQuestion(question) {
-  // mark it as answered
+  // mark it as chosen
   answeredQuestions.push(question);
   // assign it as current question
   currentQuestion = question;
@@ -24,6 +42,7 @@ function loadQuestion(question) {
   // update elements with question
   questionTextElement.textContent = question.questionText;
   assignAnswers(question);
+  resultElement.textContent = "";
 }
 
 function assignAnswers(question) {
@@ -38,10 +57,22 @@ function assignAnswers(question) {
 }
 
 function checkAnswer(answer) {
-  if (answer === currentQuestion.correctAnswer) {
-    resultElement.textContent = "Correct Answer!";
+  // if it is not the last question
+  if (questionNumber < 15) {
+    if (answer === currentQuestion.correctAnswer) {
+      resultElement.textContent = "Correct Answer!";
+      questionNumber++;
+      checkDifficulty();
+      setTimeout(
+        () => loadQuestion(getQuestion(currentQuestionDifficulty)),
+        3000
+      );
+    } else {
+      resultElement.textContent = "Incorrect answer :(";
+      setTimeout(resetGame, 3000);
+    }
   } else {
-    resultElement.textContent = "Incorrect answer :(";
+    resultElement.textContent = "Correct Answer! Thanks for playing!";
     setTimeout(resetGame, 3000);
   }
 }
@@ -71,9 +102,11 @@ function resetGame() {
   scoreElement.textContent = 0;
   progressBar.value = 0;
   score = 0;
+  answeredQuestions = [];
 }
 
 // to know when to switch difficulty
+let currentQuestionDifficulty = null;
 let questionNumber = 1;
 
 // variables for scoring
@@ -110,5 +143,5 @@ playButton.addEventListener("click", () => {
   scoreElement.classList.remove("hidden");
   progressBar.classList.remove("hidden");
   playButton.classList.add("hidden");
-  loadQuestion(getQuestion(questionList.easy));
+  loadQuestion(getQuestion(currentQuestionDifficulty));
 });
