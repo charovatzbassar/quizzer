@@ -20,7 +20,6 @@ function checkDifficulty() {
   }
 }
 
-
 function getQuestion(questions) {
   while (true) {
     let pickedQuestion =
@@ -97,12 +96,16 @@ function resetGame() {
   // bring back the start menu elements
   titleElement.classList.remove("hidden");
   playButton.classList.remove("hidden");
-  // reset global variables
+  // reset score
   resultElement.textContent = "";
   scoreElement.textContent = 0;
   progressBar.value = 0;
   score = 0;
+  // question variables
   answeredQuestions = [];
+  currentQuestion = null;
+  currentQuestionDifficulty = null;
+  questionNumber = 1;
 }
 
 // to know when to switch difficulty
@@ -143,5 +146,6 @@ playButton.addEventListener("click", () => {
   scoreElement.classList.remove("hidden");
   progressBar.classList.remove("hidden");
   playButton.classList.add("hidden");
+  checkDifficulty();
   loadQuestion(getQuestion(currentQuestionDifficulty));
 });
