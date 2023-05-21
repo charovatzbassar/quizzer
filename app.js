@@ -1,13 +1,13 @@
-function shuffleOptions(arr) {
-  let newArr = [];
+function shuffleOptions(answers) {
+  let newAnswers = [];
 
-  while (arr.length != 0) {
-    let randomElement = arr[Math.floor(Math.random() * arr.length)];
-    arr = arr.filter((e) => e != randomElement);
-    newArr.push(randomElement);
+  while (answers.length != 0) {
+    let randomElement = answers[Math.floor(Math.random() * answers.length)];
+    answers = answers.filter((e) => e != randomElement);
+    newAnswers.push(randomElement);
   }
 
-  return newArr;
+  return newAnswers;
 }
 
 function switchDifficulty() {
@@ -46,6 +46,7 @@ function addScore() {
   scoreElement.textContent = score;
 }
 
+// get new question
 function getQuestion(questions) {
   while (true) {
     let pickedQuestion =
@@ -181,6 +182,7 @@ playButton.addEventListener("click", () => {
   scoreElement.classList.remove("hidden");
   progressBar.classList.remove("hidden");
   playButton.classList.add("hidden");
+  scoreElement.textContent = 0;
   switchDifficulty();
   loadQuestion(getQuestion(currentQuestionDifficulty));
 });
