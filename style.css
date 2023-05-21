@@ -86,13 +86,32 @@
     display: none;
 }
 
-.answered {
-    background-color: green;
-    color: white;
+body {
+    background-color: #3C096C;
+}
+
+#title {
+    color: #FF9E00;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 800;
+}
+
+#questionText,
+#score,
+#result {
+    color: #FF9E00;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+#playButton {
+    font-family: 'Merriweather Sans', sans-serif;
+    color: #FF9E00;
+    background-color: #3C096C;
+    border: 2px solid #FF9E00;
+    border-radius: 0.3em;
 }
 
 #progress {
-    -webkit-appearance: none;
     appearance: none;
     width: 250px;
     height: 20px;
