@@ -10,7 +10,7 @@ function shuffleOptions(arr) {
   return newArr;
 }
 
-function checkDifficulty() {
+function switchDifficulty() {
   if (questionNumber <= 5) {
     currentQuestionDifficulty = questionList.easy;
   } else if (questionNumber <= 10) {
@@ -18,6 +18,32 @@ function checkDifficulty() {
   } else if (questionNumber <= 15) {
     currentQuestionDifficulty = questionList.hard;
   }
+}
+
+function getDifficulty() {
+  if (questionNumber <= 5) {
+    return "easy";
+  } else if (questionNumber <= 10) {
+    return "medium";
+  } else if (questionNumber <= 15) {
+    return "hard";
+  }
+}
+
+function addScore() {
+  let difficulty = getDifficulty();
+
+  if (difficulty === "easy") {
+    score += 10 - penalty;
+    progressBar.value += 10 - penalty;
+  } else if (difficulty === "medium") {
+    score += 20 - penalty * 2;
+    progressBar.value += 20 - penalty * 2;
+  } else if (difficulty === "hard") {
+    score += 30 - penalty * 3;
+    progressBar.value += 30 - penalty * 3;
+  }
+  scoreElement.textContent = score;
 }
 
 function getQuestion(questions) {
@@ -42,6 +68,10 @@ function loadQuestion(question) {
   questionTextElement.textContent = question.questionText;
   assignAnswers(question);
   resultElement.textContent = "";
+  // count seconds for scores
+  penaltyCounter = setInterval(() => {
+    penalty++;
+  }, penaltyInterval);
 }
 
 function assignAnswers(question) {
@@ -49,7 +79,7 @@ function assignAnswers(question) {
     question.correctAnswer,
     ...question.incorrectAnswers,
   ]);
-
+  // assign to buttons
   answerButtons.forEach((answerButton) => {
     answerButton.textContent = answers.pop();
   });
@@ -60,8 +90,9 @@ function checkAnswer(answer) {
   if (questionNumber < 15) {
     if (answer === currentQuestion.correctAnswer) {
       resultElement.textContent = "Correct Answer!";
+      addScore();
       questionNumber++;
-      checkDifficulty();
+      switchDifficulty();
       setTimeout(
         () => loadQuestion(getQuestion(currentQuestionDifficulty)),
         3000
@@ -71,9 +102,13 @@ function checkAnswer(answer) {
       setTimeout(resetGame, 3000);
     }
   } else {
+    addScore();
     resultElement.textContent = "Correct Answer! Thanks for playing!";
     setTimeout(resetGame, 3000);
   }
+  // clear penalty counter
+  penalty = 0;
+  clearInterval(penaltyCounter);
 }
 
 function buttonsDisable(buttons) {
@@ -114,9 +149,9 @@ let questionNumber = 1;
 
 // variables for scoring
 let score = 0;
-let seconds = 0;
-let secondCounter = null;
-let secondInterval = 2000;
+let penalty = 0;
+let penaltyCounter = null;
+let penaltyInterval = 2000;
 
 // keeping tabs for questions
 let currentQuestion = null;
@@ -146,6 +181,6 @@ playButton.addEventListener("click", () => {
   scoreElement.classList.remove("hidden");
   progressBar.classList.remove("hidden");
   playButton.classList.add("hidden");
-  checkDifficulty();
+  switchDifficulty();
   loadQuestion(getQuestion(currentQuestionDifficulty));
 });
