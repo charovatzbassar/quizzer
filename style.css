@@ -103,13 +103,29 @@ body {
     font-family: 'Merriweather Sans', sans-serif;
 }
 
-#playButton {
+#playButton,
+.answer {
     font-family: 'Merriweather Sans', sans-serif;
     color: #FF9E00;
     background-color: #3C096C;
     border: 2px solid #FF9E00;
     border-radius: 0.3em;
+    transition: 0.3s;
+    padding: 9px 20px;
 }
+
+.answer:disabled,
+.answer:disabled:hover {
+    color: white;
+    border-color: white;
+}
+
+#playButton:hover,
+.answer:hover {
+    color: yellow;
+    border-color: yellow;
+}
+
 
 #progress {
     appearance: none;
