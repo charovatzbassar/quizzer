@@ -12,20 +12,18 @@
   <body>
     <header class="container-fluid">
       <div class="row">
-        <div class="col-6">
-          <h1 id="title">Welcome to Quizzer!</h1>
-        </div>
-        <div class="col-6 d-flex justify-content-end">
-          <h1 class="hidden" id="score"></h1>
-        </div>
+        <h1 id="title">Welcome to Quizzer!</h1>
       </div>
-      <div class="row">
+      <div class="row d-flex justify-content-center">
         <button id="playButton">Start Game!</button>
       </div>
     </header>
     <main>
       <div class="container hidden" id="question">
-        <progress id="progress" value="0" max="300"></progress>
+        <h1 class="hidden" id="score"></h1>
+        <div id="progress" class="container">
+          <div id="progressBar"></div>
+        </div>
         <h4 id="questionText"></h4>
         <div class="container" id="answers">
           <div class="row">

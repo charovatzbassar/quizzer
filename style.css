@@ -94,6 +94,11 @@ body {
     color: #FF9E00;
     font-family: 'Merriweather Sans', sans-serif;
     font-weight: 800;
+    text-align: center;
+}
+
+#score {
+    text-align: end;
 }
 
 #questionText,
@@ -101,6 +106,10 @@ body {
 #result {
     color: #FF9E00;
     font-family: 'Merriweather Sans', sans-serif;
+}
+
+#playButton {
+    width: 200px;
 }
 
 #playButton,
@@ -126,14 +135,20 @@ body {
     border-color: yellow;
 }
 
-
-#progress {
-    appearance: none;
-    width: 250px;
-    height: 20px;
-}
-
-#progress,
 #answers button {
     width: 100%;
+}
+
+#progress {
+    border: 2px solid #FF9E00;
+    height: 25px;
+    padding: 4px;
+    margin-bottom: 10px;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background-color: #FF9E00;
+    transition: 0.5s;
 }

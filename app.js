@@ -35,15 +35,21 @@ function addScore() {
 
   if (difficulty === "easy") {
     score += 10 - penalty;
+    barWidth += 3.33 - penalty * 0.33;
     progressBar.value += 10 - penalty;
   } else if (difficulty === "medium") {
     score += 20 - penalty * 2;
+    barWidth += 6.67 - penalty * 0.33;
     progressBar.value += 20 - penalty * 2;
   } else if (difficulty === "hard") {
     score += 30 - penalty * 3;
+    barWidth += 10 - penalty * 0.33;
     progressBar.value += 30 - penalty * 3;
   }
   scoreElement.textContent = score;
+
+  // modidy the progress bar
+  progressBar.style.width = barWidth.toString() + "%";
 }
 
 // get new question
@@ -135,7 +141,7 @@ function resetGame() {
   // reset score
   resultElement.textContent = "";
   scoreElement.textContent = 0;
-  progressBar.value = 0;
+  progressBar.style.width = "";
   score = 0;
   // question variables
   answeredQuestions = [];
@@ -153,6 +159,7 @@ let score = 0;
 let penalty = 0;
 let penaltyCounter = null;
 let penaltyInterval = 2000;
+let barWidth = 0;
 
 // keeping tabs for questions
 let currentQuestion = null;
@@ -160,7 +167,7 @@ let answeredQuestions = [];
 
 const questionElement = document.querySelector("#question");
 const playButton = document.querySelector("#playButton");
-const progressBar = document.querySelector("#progress");
+const progressBar = document.querySelector("#progressBar");
 const titleElement = document.querySelector("#title");
 const scoreElement = document.querySelector("#score");
 const resultElement = document.querySelector("#result");
